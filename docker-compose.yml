@@ -1,0 +1,19 @@
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+    environment:
+      POSTGRES_PASSWORD: password
+
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -b '0.0.0.0' -p ${SERVER_PORT}"
+    volumes:
+      - .:/myapp
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    depends_on:
+      - db
