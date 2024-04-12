@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# README
 
-Things you may want to cover:
+Для запуска проекта нужны docker и docker compose
 
-* Ruby version
+Далее выполняем:
 
-* System dependencies
+`
+docker compose up --build
+`
 
-* Configuration
+В отдельном терминале выполняем
 
-* Database creation
+```
+docker compose run web rake db:create
 
-* Database initialization
+docker compose run webp rake db:migrate
+```
 
-* How to run the test suite
+Проект поднят
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Порты настраиваются в .env
